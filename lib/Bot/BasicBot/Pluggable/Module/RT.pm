@@ -4,7 +4,7 @@ use strict;
 
 use vars qw( @ISA $VERSION );
 @ISA     = qw(Bot::BasicBot::Pluggable::Module);
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 use RT::Client::REST;
 use RT::Client::REST::Ticket;
@@ -18,7 +18,7 @@ sub init {
         $self->set($_, '** SET ME **')
    }
    defined $self->get('user_output')
-       or $self->set('user_output', 'RT %id: %s - %S');
+       or $self->set('user_output', 'RT %i: %s - %S');
    defined $self->get('user_regexp')
        or $self->set('user_regexp', '(?:^|\s)rt\s*#?\s*(\d+)');
 }
@@ -55,12 +55,12 @@ sub told {
     $ticket->retrieve();
     my %fields = (
         '%i' => $ticket->id(),
-	'%q' => $ticket->queue(),
-	'%c' => $ticket->creator(),
-	'%s' => $ticket->subject(),
-	'%S' => $ticket->status(),
-	'%p' => $ticket->priority(),
-	'%C' => $ticket->created(),
+        '%q' => $ticket->queue(),
+        '%c' => $ticket->creator(),
+        '%s' => $ticket->subject(),
+        '%S' => $ticket->status(),
+        '%p' => $ticket->priority(),
+        '%C' => $ticket->created(),
     );
 
     my $output = $self->get('user_output');
@@ -145,7 +145,7 @@ the string can contain the following placeholders :
   %p : priotity of the ticket
   %C : time where it was created
 
-Default is : 'RT %id: %s - %S';
+Default is : 'RT %i: %s - %S';
 
 =item regexp
 
