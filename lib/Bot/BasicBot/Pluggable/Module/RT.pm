@@ -4,7 +4,7 @@ use strict;
 
 use vars qw( @ISA $VERSION );
 @ISA     = qw(Bot::BasicBot::Pluggable::Module);
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 use RT::Client::REST;
 use RT::Client::REST::Ticket;
@@ -70,6 +70,11 @@ sub told {
     return $output;
 }
 
+sub emoted {
+    my $self = shift;
+    $self->told(@_);
+}
+
 sub help { q(catch anything that looks like an RT number : /RT#?\s*(\d+)/i. it requires the RT server url, a login and password. Set them using '!set RT server', '!set RT login', '!set RT password'. The information displayed can be configured by setting the output string : '!set RT output some_string'. in the string, you can use the following placeholders :
 %i : id of the ticket
 %q : queue of the ticket
@@ -82,7 +87,7 @@ Default is : 'RT %i: %s - %S';
 
 The matching can be configured using : '!set RT regexp some_regexp'. The default is (?:^|\s)rt\s*#?\s*(\d+) .
 
-You nee to have the Vars module loaded before setting keys.
+You need to have the Vars module loaded before setting keys.
 ) }
 
 1;
