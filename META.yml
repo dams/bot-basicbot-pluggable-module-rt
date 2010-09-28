@@ -1,13 +1,24 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Bot-BasicBot-Pluggable-Module-RT
-version:      0.03
-version_from: lib/Bot/BasicBot/Pluggable/Module/RT.pm
-installdirs:  site
+---
+abstract: 'Retrieves information of RT tickets'
+author:
+  - "Damien \"dams\" Krotkine <dams@cpan.org>"
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3607'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Bot-BasicBot-Pluggable-Module-RT
+provides:
+  Bot::BasicBot::Pluggable::Module::RT:
+    file: lib/Bot/BasicBot/Pluggable/Module/RT.pm
+    version: 0.04
 requires:
-    RT::Client::REST:              0
-    RT::Client::REST::Ticket:      0
-    Test::More:                    0
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30
+  Bot::BasicBot::Pluggable: 0.5
+  RT::Client::REST: 0
+  RT::Client::REST::Ticket: 0
+  Test::More: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.04
