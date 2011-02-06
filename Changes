@@ -1,3 +1,4 @@
 {{$NEXT}}
+        . fixed documentation
         . moved to Dist::Zilla
         . cleanup
