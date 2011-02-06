@@ -1,10 +1,12 @@
-package Bot::BasicBot::Pluggable::Module::RT;
 
 use strict;
+use warnings;
 
-use vars qw( @ISA $VERSION );
-@ISA     = qw(Bot::BasicBot::Pluggable::Module);
-$VERSION = '0.05';
+package Bot::BasicBot::Pluggable::Module::RT;
+
+# ABSTRACT: This is a plugin to access information about RT tickets on IRC
+
+use base qw(Bot::BasicBot::Pluggable::Module);
 
 use RT::Client::REST;
 use RT::Client::REST::Ticket;
@@ -162,6 +164,32 @@ Its first match should be the rt number.
 Default is (?:^|\s)rt\s*#?\s*(\d+)
 
 =back
+
+=head1 COMPLETE EXAMPLE
+
+  #!/usr/bin/perl 
+  
+  use strict;
+  use warnings;
+  use Bot::BasicBot::Pluggable;
+  
+  my $bot = Bot::BasicBot::Pluggable->new(
+      server => "server",
+      port   => "6667",
+      channels => ["#bottest"],
+      nick      => "arty",
+      alt_nicks => ["arty_", "_arty"],
+      username  => "RT",
+      name      => "RT Bot",
+      charset => "utf-8", # charset the bot assumes the channel is using
+  );
+  
+  my $rt_module=$bot->load("RT");
+  $rt_module->set(user_server => 'http://rt.yourcompany.com');
+  $rt_module->set(user_login => "user");
+  $rt_module->set(user_password => "password");
+  
+  $bot->run();
 
 =head1 AUTHOR
 
