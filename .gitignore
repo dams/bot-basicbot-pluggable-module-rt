@@ -1,0 +1,12 @@
+_build
+.build
+Bot-BasicBot-Pluggable*
+cover_db
+*~
+*#
+*.bak
+*.old
+*.rej
+*.swp
+*.tmp
+logs

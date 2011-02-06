@@ -1,1 +1,3 @@
-
+{{$NEXT}}
+        . moved to Dist::Zilla
+        . cleanup

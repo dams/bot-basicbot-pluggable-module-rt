@@ -30,7 +30,7 @@ Alternatively, to install with ExtUtils::MakeMaker, you can use the following co
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2007 Damien 'dams' Krotkine 
+Copyright (C) 2007-2011 Damien 'dams' Krotkine 
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
